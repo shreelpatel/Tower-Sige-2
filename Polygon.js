@@ -1,26 +1,24 @@
-class Polygon{
-    constructor(x,y,r){
+class Polygon {
+    constructor(x, y, radius) {
         var options = {
-            isStatic:false,
-            restitution:0,
-            friction:1,
-            density:7.8
+            isStatic: false,
+            restitution: 0.5,
+            density: 0.2
         }
-		this.x=x;
-		this.y=y;
-		this.r=r;
-		this.body=Bodies.circle(x, y, this.r, options);
-		World.add(world, this.body);
-	}
-
-	display()
-	{
-		var pos=this.body.position;	
-		push()
-		translate(pos.x, pos.y);
-		ellipseMode(CENTER);
-		
-        ellipse(0,0,this.r, this.r);
-		pop()
- }
+        this.body = Bodies.circle(x, y, radius, options);
+        this.radius = radius;
+        World.add(world, this.body);
+    }
+    display(color, border) {
+        var pos = this.body.position;
+        var angle = this.angle;
+        push();
+        ellipseMode(RADIUS);
+        translate(pos.x, pos.y);
+        fill(color);
+        stroke(border);
+        strokeWeight(4);
+        ellipse(0,0,this.radius,this.radius);
+        pop();
+    }
 }
